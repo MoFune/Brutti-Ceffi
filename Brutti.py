@@ -72,7 +72,7 @@ for i, (_, row) in enumerate(df_filtrato.iterrows()):
                     <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
                     <button class="expand-button" onclick="toggleDetails('{i}')">Mostra dettagli</button>
                     <div id="details-{i}" style="display:none">
-                        <p>{row['Descrizione']}</p>
+                        <p>{row.get('Descrizione', 'Nessuna descrizione disponibile')}</p>
                     </div>
                 </div>
             """, unsafe_allow_html=True)
