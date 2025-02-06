@@ -31,7 +31,7 @@ if selected_materiale:
 # Mostrare gli elmi in una griglia con 3 colonne
 st.title("Brutti Ceffi del Met Museum")
 
-cols = st.columns(3)
+cols = st.columns(2)
 for i, (_, row) in enumerate(df_filtrato.iterrows()):
     with cols[i % 3]:
         st.image(row["Immagine"], caption=row["Nome"], use_container_width=True)
