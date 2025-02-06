@@ -59,8 +59,9 @@ if selected_materiale:
 st.title("Brutti Ceffi")
 st.write("Una collezione di elmi dal Met Museum")
 
-for i, row in df_filtrato.iterrows():
-    with cols[i % 2]:  # Alterna le colonne
+cols = st.columns(2)
+for i, (_, row) in enumerate(df_filtrato.iterrows()):
+    with cols[i % 2]:
         with st.container():
             st.markdown(f"""
                 <div class="elmo-card">
