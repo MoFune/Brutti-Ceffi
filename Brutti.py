@@ -33,7 +33,7 @@ st.title("Brutti Ceffi del Met Museum")
 
 cols = st.columns(2)
 for i, (_, row) in enumerate(df_filtrato.iterrows()):
-    with cols[i % 3]:
+    with cols[i % 2]:
         st.image(row["Immagine"], caption=row["Nome"], use_container_width=True)
         st.write(f"**Epoca:** {row['Epoca']} | **Provenienza:** {row['Provenienza']}")
         st.write(f"**Materiale:** {row['Materiale']}")
