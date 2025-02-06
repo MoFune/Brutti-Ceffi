@@ -13,6 +13,33 @@ df = pd.read_csv("elmi_fixed2.csv")
 # Riempire i valori NaN nelle immagini con un placeholder
 df["Immagine"] = df["Immagine"].fillna("https://via.placeholder.com/300")
 
+# Stile CSS per un design più moderno
+st.markdown(
+    """
+    <style>
+    .elmo-card {
+        border-radius: 12px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: white;
+    }
+    .elmo-image {
+        border-radius: 8px;
+    }
+    .expand-button {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Creare la barra laterale con i filtri
 st.sidebar.header("Filtri")
 selected_epoca = st.sidebar.multiselect("Seleziona l'epoca", df["Epoca"].unique())
@@ -29,15 +56,25 @@ if selected_materiale:
     df_filtrato = df_filtrato[df_filtrato["Materiale"].isin(selected_materiale)]
 
 # Mostrare gli elmi in una griglia con 3 colonne
-st.title("Brutti Ceffi del Met Museum")
+st.title("Brutti Ceffi")
+st.write("Una collezione di elmi dal Met Museum")
 
-cols = st.columns(2)
-for i, (_, row) in enumerate(df_filtrato.iterrows()):
-    with cols[i % 2]:
-        st.image(row["Immagine"], caption=row["Nome"], use_container_width=True)
-        st.write(f"**Epoca:** {row['Epoca']} | **Provenienza:** {row['Provenienza']}")
-        st.write(f"**Materiale:** {row['Materiale']}")
-        st.markdown(f"[🔍 Vedi in alta risoluzione]({row['Immagine']})")
+for i, row in df_filtrato.iterrows():
+    with cols[i % 2]:  # Alterna le colonne
+        with st.container():
+            st.markdown(f"""
+                <div class="elmo-card">
+                    <img src="{row['Immagine']}" class="elmo-image" width="100%">
+                    <h3>{row['Nome']}</h3>
+                    <p><b>🏺 Materiale:</b> {row['Materiale']}<br>
+                    <b>📅 Epoca:</b> {row['Epoca']}<br>
+                    <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
+                    <button class="expand-button" onclick="toggleDetails('{i}')">Mostra dettagli</button>
+                    <div id="details-{i}" style="display:none">
+                        <p>{row['Descrizione']}</p>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
 # Aggiungere un pulsante per scaricare il dataset
 st.sidebar.download_button(
