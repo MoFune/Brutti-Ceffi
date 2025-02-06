@@ -72,7 +72,10 @@ for i, (_, row) in enumerate(df_filtrato.iterrows()):
                 <p><b>🏺 Materiale:</b> {row['Materiale']}<br>
                 <b>📅 Epoca:</b> {row['Epoca']}<br>
                 <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
-                <a href="{row['Url']}" target="_blank" class="expand-button">Mostra dettagli</a>
+                    <button class="expand-button" onclick="toggleDetails('{i}')">Mostra dettagli</button>
+                    <div id="details-{i}" style="display:none">
+                    <a href="{row['Url']}" target="_blank" class="expand-button">Mostra dettagli</a>
+                    </div>
                 </div>
             """, unsafe_allow_html=True)
 
