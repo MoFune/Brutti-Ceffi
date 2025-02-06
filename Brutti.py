@@ -34,7 +34,7 @@ st.title("Brutti Ceffi del Met Museum")
 cols = st.columns(3)
 for i, (_, row) in enumerate(df_filtrato.iterrows()):
     with cols[i % 3]:
-        st.image(row["Immagine"], caption=row["Nome"], use_column_width=True)
+        st.image(row["Immagine"], caption=row["Nome"], use_container_width=True)
         st.write(f"**Epoca:** {row['Epoca']} | **Provenienza:** {row['Provenienza']}")
         st.write(f"**Materiale:** {row['Materiale']}")
         st.markdown(f"[🔍 Vedi in alta risoluzione]({row['Immagine']})")
