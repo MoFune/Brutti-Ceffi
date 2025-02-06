@@ -65,15 +65,14 @@ for i, (_, row) in enumerate(df_filtrato.iterrows()):
         with st.container():
             st.markdown(f"""
                 <div class="elmo-card">
-                    <img src="{row['Immagine']}" class="elmo-image" width="100%">
-                    <h3>{row['Nome']}</h3>
-                    <p><b>🏺 Materiale:</b> {row['Materiale']}<br>
-                    <b>📅 Epoca:</b> {row['Epoca']}<br>
-                    <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
-                    <button class="expand-button" onclick="toggleDetails('{i}')">Mostra dettagli</button>
-                    <div id="details-{i}" style="display:none">
-                        <p>{row.get('Descrizione', 'Nessuna descrizione disponibile')}</p>
-                    </div>
+                <a href="{row['Immagine']}" target="_blank">
+                <img src="{row['Immagine']}" class="elmo-image" width="100%">
+                </a>
+                <h3><a href="{row['Immagine']}" target="_blank">{row['Nome']}</a></h3>
+                <p><b>🏺 Materiale:</b> {row['Materiale']}<br>
+                <b>📅 Epoca:</b> {row['Epoca']}<br>
+                <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
+                <a href="{row['URL']}" target="_blank" class="expand-button">Mostra dettagli</a>
                 </div>
             """, unsafe_allow_html=True)
 
