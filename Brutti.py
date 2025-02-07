@@ -22,13 +22,13 @@ st.markdown(
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         padding: 10px;
         margin-bottom: 20px;
-        background-color:light gray;
+        background-color: #c2c2c2;
     }
     .elmo-image {
         border-radius: 8px;
     }
     .expand-button {
-        background-color: #007bff;
+        background-color: #ff5733;
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
