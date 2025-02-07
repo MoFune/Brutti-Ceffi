@@ -22,7 +22,7 @@ st.markdown(
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         padding: 10px;
         margin-bottom: 20px;
-        background-color: gray;
+        background-color:light gray;
     }
     .elmo-image {
         border-radius: 8px;
