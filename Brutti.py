@@ -12,11 +12,6 @@ def wide_space_default():
 
 wide_space_default()
 
-def background_default():
-    st.set_page_config(base="dark")
-
-background_default()
-
 # Caricare il dataset
 df = pd.read_csv("elmi_fixed2.csv")
 
