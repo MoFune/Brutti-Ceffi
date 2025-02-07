@@ -22,7 +22,7 @@ st.markdown(
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         padding: 10px;
         margin-bottom: 20px;
-        background-color: white;
+        background-color: gray;
     }
     .elmo-image {
         border-radius: 8px;
@@ -72,10 +72,7 @@ for i, (_, row) in enumerate(df_filtrato.iterrows()):
                 <p><b>🏺 Materiale:</b> {row['Materiale']}<br>
                 <b>📅 Epoca:</b> {row['Epoca']}<br>
                 <b>🌍 Provenienza:</b> {row['Provenienza']}</p>
-                    <button class="expand-button" onclick="toggleDetails('{i}')">Mostra dettagli</button>
-                    <div id="details-{i}" style="display:none">
-                    <a href="{row['Url']}" target="_blank" class="expand-button">Mostra dettagli</a>
-                    </div>
+                <a href="{row['Url']}" target="_blank" class="expand-button">Mostra dettagli</a>
                 </div>
             """, unsafe_allow_html=True)
 
