@@ -33,7 +33,7 @@ st.markdown(
         border-radius: 8px;
     }
     .expand-button {
-        background-color: #7D7F4D;
+        background-color: #f5f5f5;
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
