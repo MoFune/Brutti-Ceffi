@@ -28,6 +28,7 @@ st.markdown(
         padding: 10px;
         margin-bottom: 20px;
         background-color: #262730;
+        color: #f5f5f5;"
     }
     .elmo-image {
         border-radius: 8px;
