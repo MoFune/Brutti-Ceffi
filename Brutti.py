@@ -5,18 +5,24 @@
 
 
 import streamlit as st
+import json
+import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
-import pandas as pd
 
+# Configura pagina come wide
 def wide_space_default():
     st.set_page_config(layout="wide")
 
 wide_space_default()
+# Configura pagina come wide
+st.set_page_config(layout="wide")
 
-# Autenticazione con Google Sheets
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = Credentials.from_service_account_file("service.json", scopes=scope)
+# Carica le credenziali da Streamlit secrets
+creds_json = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+creds = Credentials.from_service_account_info(creds)
+
+# Inizializza il client di Google Sheets
 client = gspread.authorize(creds)
 
 # Apri il foglio di lavoro
