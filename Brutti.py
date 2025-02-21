@@ -5,33 +5,17 @@
 
 
 import streamlit as st
-import json
 import pandas as pd
-import gspread
-from google.oauth2.service_account import Credentials
+
 
 # Configura pagina come wide
 def wide_space_default():
     st.set_page_config(layout="wide")
 
 wide_space_default()
-# Configura pagina come wide
-st.set_page_config(layout="wide")
 
-# Carica le credenziali da Streamlit secrets
-creds_json = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
-creds = Credentials.from_service_account_info(creds)
-
-# Inizializza il client di Google Sheets
-client = gspread.authorize(creds)
-
-# Apri il foglio di lavoro
-SHEET_ID = "1qXmUImmsYPEgrEdXRKI0Q5siGU2ANI8ltJPDk6CSo98"
-sheet = client.open_by_key(SHEET_ID).sheet1
-
-# Leggi i dati e trasformali in DataFrame
-data = sheet.get_all_records()
-df = pd.DataFrame(data)
+# Caricare il dataset
+df = pd.read_csv("elmi_fixed2.csv")
 
 # Riempire i valori NaN nelle immagini con un placeholder
 df["Immagine"] = df["Immagine"].fillna("https://via.placeholder.com/300")
