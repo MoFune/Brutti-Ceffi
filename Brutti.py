@@ -64,8 +64,8 @@ if selected_materiale:
     df_filtrato = df_filtrato[df_filtrato["Materiale"].isin(selected_materiale)]
 
 # Mostrare gli elmi in una griglia con 3 colonne
-st.title("Brutti Ceffi")
-st.write("Una collezione di elmi dal Met Museum")
+st.title("Il Volto della Guerra")
+st.write("Elmi tra funzione, arte e simbolismo")
 
 cols = st.columns(2)
 for i, (_, row) in enumerate(df_filtrato.iterrows()):
